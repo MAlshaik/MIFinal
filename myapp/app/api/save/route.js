@@ -14,6 +14,7 @@ export async function POST(req) {
   const { data, error } = await supabase.auth.getUser();
   if (error || !data?.user) {
     // Consider redirection logic using NextResponse.redirect(...)
+    redirect('/login');
     return NextResponse.json({ error: 'User not authenticated' }, { status: 401 });
   }
   const user = data.user; 
